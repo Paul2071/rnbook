@@ -9,7 +9,7 @@ export default function App() {
 
   const clickHandler = () => {
     setName("Sasha")
-    setPerson({name: "Sasha", age: 26})
+    setPerson({name: "Sasha", age: 20})
   }
 
   return (
