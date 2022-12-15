@@ -1,40 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { Button, StyleSheet, Text, View, TextInput } from "react-native";
 
 export default function App() {
+  const [name, setName] = useState();
+  const [age, setAge] = useState();
 
-  const [name, setName] = useState("Paul")
-  const [person, setPerson ] = useState({name: "Paul", age: 36})
-
-  const clickHandler = () => { 
-    setName("Sasha")
-    setPerson({name: "Sasha", age: 26})
-  
-  }
+ 
 
   return (
     <View style={styles.container}>
-        <Text>What is your name?</Text>   
-        <TextInput 
+      <Text>What is your name?</Text>
+      <TextInput
         style={styles.input}
-        placeholder= "Enter name here..." 
+        placeholder="Enter name here..."
         onChangeText={(value) => setName(value)}
-        />
-      <View style={styles.header}>  
-        <Text style={styles.boldText}>My name is {name}</Text>   
+      />
+      <Text>What is your age?</Text>
+      <TextInput
+        keyboardType="numeric"
+        style={styles.age}
+        placeholder="Enter age here..."
+        onChangeText={(value) => setAge(value)}
+      />
+
+
+      <View style={styles.header}>
+        <Text style={styles.boldText}>My name is {name} and I am {age} years old</Text>
       </View>
-        <View style={styles.body}>
-          <Text style={styles.boldText}> Their name is {person.name} and they are {person.age} years old</Text>
-          <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptatum cumque laudantium rerum expedita accusamus. </Text>
-          <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptatum cumque laudantium rerum expedita accusamus. </Text>
-          <View styles={styles.buttonContainer}>
-            <Button 
-            title="update name"
-            onPress={clickHandler}  
-            />
-          </View>
-        </View>
     </View>
   );
 }
@@ -42,32 +35,38 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
   header: {
     backgroundColor: "pink",
     padding: 20,
-   },
-   boldText: {
-      fontWeight: "bold",
-      color: "red",
-   },
-   body: {
+  },
+  boldText: {
+    fontWeight: "bold",
+    color: "red",
+  },
+  body: {
     backgroundColor: "purple",
     padding: 20,
     fontWeight: "bold",
-   },
-   buttonContainer: {
+  },
+  buttonContainer: {
     marginTop: 20,
-   },
-   input: {
-    
+  },
+  input: {
     borderWidth: 1,
     borderColor: "#777",
     padding: 8,
     margin: 10,
     width: 150,
-   }
+  },
+  age: {
+    borderWidth: 1,
+    borderColor: "#777",
+    padding: 8,
+    margin: 10,
+    width: 150,
+  },
 });
