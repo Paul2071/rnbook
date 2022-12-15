@@ -1,22 +1,41 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Button, StyleSheet, Text, View, TextInput } from "react-native";
+import { 
+  Button, 
+  StyleSheet, 
+  Text, 
+  View, 
+  TextInput, 
+  ScrollView,
+  FlatList  } from "react-native";
 
 export default function App() {
   const [name, setName] = useState();
   const [age, setAge] = useState();
+  const [ people, setPeople ] = useState([
+    {name: "Fjor", id: 1},
+    {name: "Magne", id: 2 },
+    {name: "Laurits", id: 3 },
+    {name: "Saxxa", id: 4},
+    {name: "Isolde", id: 5},
+    {name: "Edda", id: 6},
+    {name: "Iman", id: 7},
+    {name: "Odin", id: 8},
+  ])
 
  
 
   return (
     <View style={styles.container}>
       <Text>What is your name?</Text>
+
       <TextInput
         style={styles.input}
         placeholder="Enter name here..."
         onChangeText={(value) => setName(value)}
       />
       <Text>What is your age?</Text>
+
       <TextInput
         keyboardType="numeric"
         style={styles.age}
@@ -24,15 +43,42 @@ export default function App() {
         onChangeText={(value) => setAge(value)}
       />
 
-
       <View style={styles.header}>
         <Text style={styles.boldText}>My name is {name} and I am {age} years old</Text>
       </View>
+
+      <FlatList 
+        numColumns={4}
+        keyExtractor={(item) => item.id}
+        data={people}
+        renderItem={( { item } ) => (
+
+          <Text style={styles.element}> {item.name}</Text>
+
+        )}
+      />
+      
+      {/* <ScrollView>
+       {people.map((element) => {
+        return (
+          <View key={element.key}>
+            <Text style={styles.element}>{element.name}</Text>
+          </View>
+        )
+        })}
+      </ScrollView>  */}
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  element: {
+    marginTop: 10,
+    padding: 15,
+    backgroundColor: "teal",
+    fontSize: 15
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
