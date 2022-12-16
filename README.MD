@@ -14,11 +14,15 @@ Looking at docs, very basic view and text tags added with lorem ipsum text and d
 
 
 
-
+https://reactnative.dev/docs/button - Button 
 https://reactnative.dev/docs/textinput  -  list of react native props for textinput
 https://reactnative.dev/docs/flatlist - flatlist
 
 Random thoughts below, maybe useful when coming back to RN later
+
+buttons are difficult to use for touch components, cant really style them.
+use Touchable components for on touch events.
+Button is a self closing tag that takes the prop of "title={}" to denote what it is. Other props like onPress, accessibilityLabel are available.
 
 Mapping through an array to display a list similar to React. 
 FlatList is an alternative and is a little different

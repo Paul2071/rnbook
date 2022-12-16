@@ -7,7 +7,8 @@ import {
   View, 
   TextInput, 
   ScrollView,
-  FlatList  } from "react-native";
+  FlatList,
+  TouchableOpacity  } from "react-native";
 
 export default function App() {
   const [name, setName] = useState();
@@ -16,14 +17,34 @@ export default function App() {
     {name: "Fjor", id: 1},
     {name: "Magne", id: 2 },
     {name: "Laurits", id: 3 },
-    {name: "Saxxa", id: 4},
+    {name: "Saxa", id: 4},
     {name: "Isolde", id: 5},
     {name: "Edda", id: 6},
     {name: "Iman", id: 7},
     {name: "Odin", id: 8},
   ])
 
- 
+const pressHandler = (id) => {
+  console.log(id);
+  setPeople( (previousPeople) => {
+    return previousPeople.filter( ( person ) => person.id != id );
+  }
+    )
+} 
+
+const resetState = () => {
+  setPeople([
+    {name: "Fjor", id: 1},
+    {name: "Magne", id: 2 },
+    {name: "Laurits", id: 3 },
+    {name: "Saxa", id: 4},
+    {name: "Isolde", id: 5},
+    {name: "Edda", id: 6},
+    {name: "Iman", id: 7},
+    {name: "Odin", id: 8},
+  ])
+}
+
 
   return (
     <View style={styles.container}>
@@ -47,17 +68,27 @@ export default function App() {
         <Text style={styles.boldText}>My name is {name} and I am {age} years old</Text>
       </View>
 
+        
+      <Button 
+      title={"reset"} 
+      onPress={resetState}
+      />
+
+
+
       <FlatList 
-        numColumns={4}
+        numColumns={4}        
         keyExtractor={(item) => item.id}
         data={people}
         renderItem={( { item } ) => (
-
+        <TouchableOpacity onPress={ () => pressHandler(item.id)} >    
           <Text style={styles.element}> {item.name}</Text>
+         </TouchableOpacity>  
 
         )}
       />
       
+
       {/* <ScrollView>
        {people.map((element) => {
         return (
@@ -75,6 +106,7 @@ export default function App() {
 const styles = StyleSheet.create({
   element: {
     marginTop: 10,
+    marginLeft: 10,
     padding: 15,
     backgroundColor: "teal",
     fontSize: 15
