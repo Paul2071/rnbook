@@ -5,8 +5,8 @@ import {
   Text,
   View,
   FlatList,
-  TouchableOpacity,
-} from "react-native";
+  } from "react-native";
+  import Header from "./components/header";
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -17,8 +17,13 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+     {/* header */}
+      <Header/>
       <View style={styles.content}>
+      {/* todo form */}
+
         <View style={styles.list}>
+
           <FlatList
             keyExtractor={(item) => item.key}
             data={todos}
