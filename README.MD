@@ -31,3 +31,5 @@ FlatList is an alternative and is a little different
     - renderItem: what to do with each element you are mapping over - ({ destructure element here for access to it all}) => ()
     -FlatList better for longer lists
     -Flatlist automatically looks for a key property
+
+ Touch components are many and varied! Getting touchopacity to work is a little fiddly.
