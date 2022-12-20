@@ -33,3 +33,8 @@ FlatList is an alternative and is a little different
     -Flatlist automatically looks for a key property
 
  Touch components are many and varied! Getting touchopacity to work is a little fiddly.
+
+ flexbox and react native:
+ sandbox branch has a few things to play around with for flexbox stuff
+ flex: 1 property is how much of the available space the object will try and take up - 1 is 100% .5 is 50%.
+ flexdirection and justifycontent are the same as css
